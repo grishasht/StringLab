@@ -3,8 +3,12 @@ package article.services;
 import java.io.*;
 
 public class FileReader {
+    /*Class which helps to read data from file in more convenient way*/
     public BufferedReader buffReader;
 
+    /*Singleton pattern.
+    * Was made for that case you want be sure that you open exactly
+    * file you wanted and cursor wouldn't be reseted*/
     public static FileReader getInstance() {
         return FileReader.SingletonHolder.INSTANCE;
     }
