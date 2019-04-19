@@ -1,5 +1,7 @@
 package article.model;
 
+import java.util.Objects;
+
 public class Word {
     /*Word model class*/
     private String lexem;
@@ -61,6 +63,22 @@ public class Word {
 
     public String getWord() {
         return lexem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Word word = (Word) o;
+        return vowelNumber == word.vowelNumber &&
+                totalLength == word.totalLength &&
+                Objects.equals(lexem, word.lexem) &&
+                Objects.equals(sybolEquality, word.sybolEquality);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lexem, vowelNumber, totalLength, sybolEquality);
     }
 
     @Override
