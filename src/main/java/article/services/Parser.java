@@ -37,7 +37,7 @@ public class Parser {
         file.closeFile();
     }
 
-    private String[] splitText(){
+    public String[] splitText(){
         /*This method splits the text from file*/
         getFileBuffer();
         final String S = "\\W+";
@@ -45,7 +45,7 @@ public class Parser {
         return pattern.split(fileBuffer);
     }
 
-    private Integer countVowels(String word, Pattern pattern){
+    public Integer countVowels(String word, Pattern pattern){
         /*This method counts vowel characters in each word*/
         Integer count = 0;
         Matcher matcher = pattern.matcher(word);
