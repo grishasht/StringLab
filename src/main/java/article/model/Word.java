@@ -1,6 +1,7 @@
 package article.model;
 
 public class Word {
+    /*Word model class*/
     private String lexem;
     private int vowelNumber;
     private int totalLength;
@@ -14,6 +15,7 @@ public class Word {
     }
 
     public class Builder{
+        /*Builder pattern*/
 
         public Builder() {
             //this.word = new Word();
