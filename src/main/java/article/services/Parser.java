@@ -12,7 +12,7 @@ public class Parser {
     private String fileBuffer = "";
     /*List with parsed words*/
     private List<Word> wordList = new LinkedList<>();
-    private FileReader file = FileReader.getInstance();
+    private FileReader file = new FileReader();
 
     public List<Word> getWordList() {
         return wordList;
@@ -26,48 +26,48 @@ public class Parser {
         this.filePath = filePath;
     }
 
-    private void getFileBuffer(){
-        /*This method gets out all file int identifier fileBuffer*/
+    /*This method gets out all file int identifier fileBuffer*/
+    private void getFileBuffer() {
         file.openFile(filePath);
         String line = file.readFromFile();
-        while (line != ""){
+        while (line != "") {
             fileBuffer += line;
             line = file.readFromFile();
         }
         file.closeFile();
     }
 
-    public String[] splitText(){
-        /*This method splits the text from file*/
+    /*This method splits the text from file*/
+    public String[] splitText() {
         getFileBuffer();
         final String S = "\\W+";
         Pattern pattern = Pattern.compile(S);
         return pattern.split(fileBuffer);
     }
 
-    public Integer countVowels(String word, Pattern pattern){
-        /*This method counts vowel characters in each word*/
+    /*This method counts vowel characters in each word*/
+    public Integer countVowels(String word, Pattern pattern) {
         Integer count = 0;
         Matcher matcher = pattern.matcher(word);
-        while (matcher.find()){
+        while (matcher.find()) {
             count++;
         }
         return count;
     }
 
-    public void parseText(){
-        /*This method creates list with word and his information*/
+    /*This method creates list with word and his information*/
+    public void parseText() {
         String[] parsedText = splitText();
         final String example = "[aoeui]";
         Pattern pattern = Pattern.compile(example);
-        for (String word: parsedText){
-            if(!word.equals(""))
-            wordList.add(Word.newBuilder()
-                    .setWord(word)
-                    .setVowelNumber(countVowels(word, pattern))
-                    .setTotalLength(word.length())
-                    .getSymbolsEquality()
-                    .build());
+        for (String word : parsedText) {
+            if (!word.equals(""))
+                wordList.add(Word.newBuilder()
+                        .setWord(word)
+                        .setVowelNumber(countVowels(word, pattern))
+                        .setTotalLength(word.length())
+                        .getSymbolsEquality()
+                        .build());
         }
     }
 }

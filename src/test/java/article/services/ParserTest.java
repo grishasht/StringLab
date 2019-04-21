@@ -12,18 +12,18 @@ import static org.junit.Assert.*;
 public class ParserTest {
 
     @Test
-    public void shouldReturnCorrectStringArray(){
+    public void shouldReturnCorrectStringArray() {
         Parser parser = new Parser("src/main/resources/testFiles/test1.txt");
         String[] result = parser.splitText();
         String[] expected = {"Google", "was", "founded", "in", "1998",
-                            "by", "Larry", "Page", "and", "Sergey",
-                            "Brin", "while", "they", "were"};
+                "by", "Larry", "Page", "and", "Sergey",
+                "Brin", "while", "they", "were"};
 
         assertArrayEquals(expected, result);
     }
 
     @Test
-    public void shouldReturnCorrectVowelNumber(){
+    public void shouldReturnCorrectVowelNumber() {
         Parser parser = new Parser("src/main/resources/testFiles/test1.txt");
         final String example = "[aoeui]";
         Pattern pattern = Pattern.compile(example);
@@ -31,7 +31,7 @@ public class ParserTest {
         Integer[] expected = {3, 1, 3, 1, 0, 0, 1, 2, 1, 2, 1, 2, 1, 2};
         Integer[] result = new Integer[buffer.length];
         int i = 0;
-        for (String str: buffer) {
+        for (String str : buffer) {
             result[i++] = parser.countVowels(str, pattern);
         }
 
@@ -39,7 +39,7 @@ public class ParserTest {
     }
 
     @Test
-    public void shouldReturnCorrectlyCreatedListOfWords(){
+    public void shouldReturnCorrectlyCreatedListOfWords() {
         Parser parser = new Parser("src/main/resources/testFiles/test1.txt");
         parser.parseText();
         List<Word> actual = parser.getWordList();
