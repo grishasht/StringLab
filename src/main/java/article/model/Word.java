@@ -16,11 +16,10 @@ public class Word {
         return new Word().new Builder();
     }
 
+    /*Builder pattern*/
     public class Builder{
-        /*Builder pattern*/
 
         public Builder() {
-            //this.word = new Word();
         }
 
         public Builder setVowelNumber(Integer vowelNumber) {
